@@ -29,6 +29,10 @@ sub explain-prev-line($x) {
     explain-prev-line( $x );
 }
 {
+    my $x = [ ('b',4).Hash ]; # !WARN! again, we are even more explicit
+    explain-prev-line( $x );
+}
+{
     my $x = [ ${ b => 4 } ]; # No comma - Put Hash inside Scalar container
     explain-prev-line( $x );
 }

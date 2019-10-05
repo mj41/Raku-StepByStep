@@ -19,6 +19,13 @@ say WHAT $x; # (Array)
 say WHAT $x[0]; # (Pair)
 say $x[0]<b>; # 4
 
+my $x = [ ('b',4).Hash ]; # !WARN! again, we are even more explicit
+say $x.gist; # [b => 4]
+say $x.perl; # $[:b(4)]
+say WHAT $x; # (Array)
+say WHAT $x[0]; # (Pair)
+say $x[0]<b>; # 4
+
 my $x = [ ${ b => 4 } ]; # No comma - Put Hash inside Scalar container
 say $x.gist; # [{b => 4}]
 say $x.perl; # $[{:b(4)},]
