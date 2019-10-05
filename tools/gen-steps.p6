@@ -10,13 +10,12 @@ sub get_out($cmd) {
 }
 
 
-for 'array-hash-pair' -> $file-base {
-    my $file-rel-path = "src/{$file-base}.p6";
-    my $cmd = "perl6 -Ilib {$file-rel-path}";
+for 'array-hash-pair' -> $in-base {
+    my $in-rel-path = "src/{$in-base}.p6";
+    my $out-rel-path = "steps/{$in-base}.p6";
+    say "Generation '{$in-rel-path}' -> '$out-rel-path'";
+    my $cmd = "perl6 -Ilib {$in-rel-path}";
     my $out = get_out($cmd);
-
-    my $out-rel-path = "steps/{$file-base}.p6";
     $out-rel-path.IO.spurt($out);
-
     CATCH { say $_.perl }
 }
