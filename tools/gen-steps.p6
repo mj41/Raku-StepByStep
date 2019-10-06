@@ -10,7 +10,10 @@ sub get_out($cmd) {
 }
 
 
-for 'array-hash-pair' -> $in-base {
+for <<
+    capture-array
+    array-hash-pair
+>> -> $in-base {
     my $in-rel-path = "src/{$in-base}.p6";
     my $out-rel-path = "steps/{$in-base}.p6";
     say "Generation '{$in-rel-path}' -> '$out-rel-path'";
