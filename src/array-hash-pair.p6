@@ -1,8 +1,8 @@
 use StepByStep;
-@file_src_code_lines = $?FILE.IO.slurp.lines;
+@file-src-code-lines = $?FILE.IO.slurp.lines;
 
 sub explain-prev-line($x) {
-    say line-before-call;
+    say line-before-call();
     print next-line-and-comment-prefix;
     say $x.gist;
     print next-line-and-comment-prefix;
