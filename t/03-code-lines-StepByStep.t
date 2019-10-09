@@ -41,31 +41,34 @@ is-deeply
     'next-code-lines'
 ;
 
-sub testsub-lines-before-call {
-    my @lines = sbs-lines-before-call(2);
-    is-deeply
-        @lines,
-        [ '# LINE-A-BEFORE-CALL', '# LINE-B-BEFORE-CALL' ],
-        'lines before call'
-    ;
+{
+    sub testsub-lines-before-call {
+        my @lines = sbs-lines-before-call(2);
+        is-deeply
+            @lines,
+            [ '# LINE-A-BEFORE-CALL', '# LINE-B-BEFORE-CALL' ],
+            'lines before call'
+        ;
+    }
+
+    # LINE-A-BEFORE-CALL
+    # LINE-B-BEFORE-CALL
+    testsub-lines-before-call;
 }
 
-# LINE-A-BEFORE-CALL
-# LINE-B-BEFORE-CALL
-testsub-lines-before-call;
+{
+    sub testsub-lines-after-call {
+        my @lines = sbs-lines-after-call(2);
+        is-deeply
+            @lines,
+            [ '# LINE-A-AFTER-CALL', '# LINE-B-AFTER-CALL' ],
+            'lines after call'
+        ;
+    }
 
-sub testsub-lines-after-call {
-    my @lines = sbs-lines-after-call(2);
-    is-deeply
-        @lines,
-        [ '# LINE-A-AFTER-CALL', '# LINE-B-AFTER-CALL' ],
-        'lines after call'
-    ;
+    testsub-lines-after-call;
+    # LINE-A-AFTER-CALL
+    # LINE-B-AFTER-CALL
 }
-
-testsub-lines-after-call;
-# LINE-A-AFTER-CALL
-# LINE-B-AFTER-CALL
-
 
 done-testing;
