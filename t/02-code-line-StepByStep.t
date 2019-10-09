@@ -24,18 +24,18 @@ my $line = sbs-next-line-and-comment-prefix;
 my $x = 10;
 is $line, 'my $x = 10; # ', 'next-line-and-comment-prefix';
 
-sub test-line-before-call {
+sub testsub-line-before-call {
     is sbs-line-before-call, '# LINE-BEFORE-CALL', 'line before call';
 }
 
 # LINE-BEFORE-CALL
-test-line-before-call;
+testsub-line-before-call;
 
-sub test-line-after-call {
+sub testsub-line-after-call {
     is sbs-line-after-call, '# LINE-AFTER-CALL', 'line after call';
 }
 
-test-line-after-call;
+testsub-line-after-call;
 # LINE-AFTER-CALL
 
 done-testing;
