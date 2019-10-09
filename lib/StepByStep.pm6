@@ -49,6 +49,7 @@ sub code-lines($lines-from, $lines-num, :$level-offset=0, :$trim=True) is export
 
 sub rel-code-lines($line-offset, $lines-num, :$level-offset=0, :$trim=True) is export {
     my $call-frame-line = call-frame-line(1 + $level-offset);
+    $call-frame-line++ if $line-offset < 0;
     return code-lines(
         $call-frame-line + $line-offset,
         $lines-num,
@@ -57,16 +58,34 @@ sub rel-code-lines($line-offset, $lines-num, :$level-offset=0, :$trim=True) is e
     );
 }
 
-sub lines-before-call( $lines-num, :$trim=True ) is export {
+sub prev-code-lines( $lines-num=2, :$trim=True ) is export {
     rel-code-lines(
-        -$lines-num,
+        -($lines-num + 1),
+        $lines-num,
+        level-offset => 1,
+        :$trim
+    );
+}
+
+sub next-code-lines( $lines-num=2, :$trim=True ) is export {
+    rel-code-lines(
+        1,
+        $lines-num,
+        level-offset => 1,
+        :$trim
+    );
+}
+
+sub lines-before-call( $lines-num=2, :$trim=True ) is export {
+    rel-code-lines(
+        -($lines-num + 1),
         $lines-num,
         level-offset => 2,
         :$trim
     );
 }
 
-sub lines-after-call( $lines-num, :$trim=True ) is export {
+sub lines-after-call( $lines-num=2, :$trim=True ) is export {
     rel-code-lines(
         1,
         $lines-num,

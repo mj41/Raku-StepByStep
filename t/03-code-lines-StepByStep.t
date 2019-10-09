@@ -9,20 +9,42 @@ use StepByStep;
 is-deeply
     code-lines(7,2),
     [ '# SRC-LINE-A', '# SRC-LINE-B' ],
-    'abs lines works'
+    'code-lines - absolute lines works'
 ;
 
+# SRC-LINE-E
+# SRC-LINE-F
+is-deeply
+    rel-code-lines(-3,2), # skip 'is-deeply'
+    [ '# SRC-LINE-E', '# SRC-LINE-F' ],
+    'rel-code-lines - relative lines works'
+;
+
+# SRC-LINE-I
+# SRC-LINE-J
+# SRC-LINE-K
+my @linesIJK = prev-code-lines(3);
+is-deeply
+    @linesIJK,
+    [ '# SRC-LINE-I', '# SRC-LINE-J', '# SRC-LINE-K' ],
+    'prev-code-lines'
+;
+
+
+my @linesXYZ = next-code-lines(3);
 # SRC-LINE-X
 # SRC-LINE-Y
+# SRC-LINE-Z
 is-deeply
-    rel-code-lines(-2,2),
-    [ '# SRC-LINE-X', '# SRC-LINE-Y' ],
-    'rel lines works'
+    @linesXYZ,
+    [ '# SRC-LINE-X', '# SRC-LINE-Y', '# SRC-LINE-Z' ],
+    'next-code-lines'
 ;
 
 sub test-lines-before-call {
+    my @lines = lines-before-call(2);
     is-deeply
-        lines-before-call(2),
+        @lines,
         [ '# LINE-A-BEFORE-CALL', '# LINE-B-BEFORE-CALL' ],
         'lines before call'
     ;
