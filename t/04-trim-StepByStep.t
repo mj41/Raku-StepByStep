@@ -1,11 +1,11 @@
 use Test;
 
 use StepByStep;
-@file-src-code-lines = $?FILE.IO.slurp.lines;
+@sbs-file-src-code-lines = $?FILE.IO.slurp.lines;
 
 {
     # Next two comments must have 4 leading spaces.
-    my @linesXYZ = next-code-lines(2, :shift-left(3) );
+    my @linesXYZ = sbs-next-code-lines(2, :shift-left(3) );
     # SRC-LINE-X
     # SRC-LINE-Y
     is-deeply
@@ -15,10 +15,10 @@ use StepByStep;
     ;
 }
 
-$default-shift-left = 2;
+$sbs-default-shift-left = 2;
 {
     # Next two comments must have 4 leading spaces.
-    my @linesXYZ = next-code-lines;
+    my @linesXYZ = sbs-next-code-lines;
     # SRC-LINE-R
     # SRC-LINE-S
     is-deeply

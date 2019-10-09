@@ -1,13 +1,13 @@
 use Test;
 
 use StepByStep;
-@file-src-code-lines = $?FILE.IO.slurp.lines;
+@sbs-file-src-code-lines = $?FILE.IO.slurp.lines;
 
 # Next lines must be lines numbers 7 and 8.
 # SRC-LINE-A
 # SRC-LINE-B
 is-deeply
-    code-lines(7,2),
+    sbs-code-lines(7,2),
     [ '# SRC-LINE-A', '# SRC-LINE-B' ],
     'code-lines - absolute lines works'
 ;
@@ -15,7 +15,7 @@ is-deeply
 # SRC-LINE-E
 # SRC-LINE-F
 is-deeply
-    rel-code-lines(-3,2), # skip 'is-deeply'
+    sbs-rel-code-lines(-3,2), # skip 'is-deeply'
     [ '# SRC-LINE-E', '# SRC-LINE-F' ],
     'rel-code-lines - relative lines works'
 ;
@@ -23,7 +23,7 @@ is-deeply
 # SRC-LINE-I
 # SRC-LINE-J
 # SRC-LINE-K
-my @linesIJK = prev-code-lines(3);
+my @linesIJK = sbs-prev-code-lines(3);
 is-deeply
     @linesIJK,
     [ '# SRC-LINE-I', '# SRC-LINE-J', '# SRC-LINE-K' ],
@@ -31,7 +31,7 @@ is-deeply
 ;
 
 
-my @linesXYZ = next-code-lines(3);
+my @linesXYZ = sbs-next-code-lines(3);
 # SRC-LINE-X
 # SRC-LINE-Y
 # SRC-LINE-Z
@@ -42,7 +42,7 @@ is-deeply
 ;
 
 sub testsub-lines-before-call {
-    my @lines = lines-before-call(2);
+    my @lines = sbs-lines-before-call(2);
     is-deeply
         @lines,
         [ '# LINE-A-BEFORE-CALL', '# LINE-B-BEFORE-CALL' ],
@@ -55,7 +55,7 @@ sub testsub-lines-before-call {
 testsub-lines-before-call;
 
 sub testsub-lines-after-call {
-    my @lines = lines-after-call(2);
+    my @lines = sbs-lines-after-call(2);
     is-deeply
         @lines,
         [ '# LINE-A-AFTER-CALL', '# LINE-B-AFTER-CALL' ],

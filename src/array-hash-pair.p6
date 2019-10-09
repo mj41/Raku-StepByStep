@@ -1,17 +1,17 @@
 use StepByStep;
-@file-src-code-lines = $?FILE.IO.slurp.lines;
+@sbs-file-src-code-lines = $?FILE.IO.slurp.lines;
 
 sub explain-prev-line($x) {
-    say line-before-call();
-    print next-line-and-comment-prefix;
+    say sbs-line-before-call();
+    print sbs-next-line-and-comment-prefix;
     say $x.gist;
-    print next-line-and-comment-prefix;
+    print sbs-next-line-and-comment-prefix;
     say $x.perl;
-    print next-line-and-comment-prefix;
+    print sbs-next-line-and-comment-prefix;
     say WHAT $x;
-    print next-line-and-comment-prefix;
+    print sbs-next-line-and-comment-prefix;
     say WHAT $x[0];
-    print next-line-and-comment-prefix;
+    print sbs-next-line-and-comment-prefix;
     say $x[0]<b>;
     say "";
 }

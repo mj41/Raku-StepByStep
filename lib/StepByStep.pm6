@@ -1,52 +1,52 @@
 unit module StepByStep;
 
-our @file-src-code-lines is export;
-our $default-shift-left is export = 0;
+our @sbs-file-src-code-lines is export;
+our $sbs-default-shift-left is export = 0;
 
-sub code-line(
+sub sbs-code-line(
     $line-num,
-    :$shift-left=$default-shift-left,
+    :$shift-left=$sbs-default-shift-left,
     :$trim=True
 ) is export {
-    my $line = @file-src-code-lines[ $line-num - 1 ];
+    my $line = @sbs-file-src-code-lines[ $line-num - 1 ];
     return $line.substr($shift-left) if $shift-left;
     return $line.trim if $trim and !$shift-left;
     return $line;
 }
 
-sub call-frame-line($level-offset) {
+sub sbs-call-frame-line($level-offset) {
     callframe(1 + $level-offset).line;
 }
 
-sub rel-code-line($line-offset=0, :$level-offset=0, *%sl-trim ) is export {
-    my $line-num = call-frame-line(1+$level-offset) + $line-offset;
-    return code-line( $line-num, |%sl-trim );
+sub sbs-rel-code-line($line-offset=0, :$level-offset=0, *%sl-trim ) is export {
+    my $line-num = sbs-call-frame-line(1+$level-offset) + $line-offset;
+    return sbs-code-line( $line-num, |%sl-trim );
 }
 
-sub prev-code-line(:$level-offset=0, *%sl-trim ) is export {
-    rel-code-line(-1, level-offset => 1+$level-offset, |%sl-trim )
+sub sbs-prev-code-line(:$level-offset=0, *%sl-trim ) is export {
+    sbs-rel-code-line(-1, level-offset => 1+$level-offset, |%sl-trim )
 }
 
-sub next-code-line(:$level-offset=0, *%sl-trim ) is export {
-    rel-code-line(1, level-offset => 1+$level-offset, |%sl-trim )
+sub sbs-next-code-line(:$level-offset=0, *%sl-trim ) is export {
+    sbs-rel-code-line(1, level-offset => 1+$level-offset, |%sl-trim )
 }
 
-sub next-line-and-comment-prefix is export {
-    next-code-line(level-offset => 1, :trim) ~ " # ";
+sub sbs-next-line-and-comment-prefix is export {
+    sbs-next-code-line(level-offset => 1, :trim) ~ " # ";
 }
 
-sub line-before-call( *%sl-trim ) is export {
-    prev-code-line( level-offset => 2, |%sl-trim );
+sub sbs-line-before-call( *%sl-trim ) is export {
+    sbs-prev-code-line( level-offset => 2, |%sl-trim );
 }
 
-sub line-after-call( *%sl-trim ) is export {
-    next-code-line( level-offset => 2, |%sl-trim );
+sub sbs-line-after-call( *%sl-trim ) is export {
+    sbs-next-code-line( level-offset => 2, |%sl-trim );
 }
 
-sub code-lines($lines-from, $lines-num, :$level-offset=0, *%sl-trim) is export {
+sub sbs-code-lines($lines-from, $lines-num, :$level-offset=0, *%sl-trim) is export {
     my @lines;
     for $lines-from..($lines-from+$lines-num-1) -> $line-num {
-        push @lines,  code-line(
+        push @lines,  sbs-code-line(
             $line-num,
             |%sl-trim
         );
@@ -54,10 +54,10 @@ sub code-lines($lines-from, $lines-num, :$level-offset=0, *%sl-trim) is export {
     return @lines;
 }
 
-sub rel-code-lines($line-offset, $lines-num, :$level-offset=0, *%sl-trim) is export {
-    my $call-frame-line = call-frame-line(1 + $level-offset);
+sub sbs-rel-code-lines($line-offset, $lines-num, :$level-offset=0, *%sl-trim) is export {
+    my $call-frame-line = sbs-call-frame-line(1 + $level-offset);
     $call-frame-line++ if $line-offset < 0;
-    return code-lines(
+    return sbs-code-lines(
         $call-frame-line + $line-offset,
         $lines-num,
         level-offset => $level-offset + 1,
@@ -65,8 +65,8 @@ sub rel-code-lines($line-offset, $lines-num, :$level-offset=0, *%sl-trim) is exp
     );
 }
 
-sub prev-code-lines( $lines-num=2, *%sl-trim ) is export {
-    rel-code-lines(
+sub sbs-prev-code-lines( $lines-num=2, *%sl-trim ) is export {
+    sbs-rel-code-lines(
         -($lines-num + 1),
         $lines-num,
         level-offset => 1,
@@ -74,8 +74,8 @@ sub prev-code-lines( $lines-num=2, *%sl-trim ) is export {
     );
 }
 
-sub next-code-lines( $lines-num=2, *%sl-trim ) is export {
-    rel-code-lines(
+sub sbs-next-code-lines( $lines-num=2, *%sl-trim ) is export {
+    sbs-rel-code-lines(
         1,
         $lines-num,
         level-offset => 1,
@@ -83,8 +83,8 @@ sub next-code-lines( $lines-num=2, *%sl-trim ) is export {
     );
 }
 
-sub lines-before-call( $lines-num=2, *%sl-trim ) is export {
-    rel-code-lines(
+sub sbs-lines-before-call( $lines-num=2, *%sl-trim ) is export {
+    sbs-rel-code-lines(
         -($lines-num + 1),
         $lines-num,
         level-offset => 2,
@@ -92,8 +92,8 @@ sub lines-before-call( $lines-num=2, *%sl-trim ) is export {
     );
 }
 
-sub lines-after-call( $lines-num=2, *%sl-trim ) is export {
-    rel-code-lines(
+sub sbs-lines-after-call( $lines-num=2, *%sl-trim ) is export {
+    sbs-rel-code-lines(
         1,
         $lines-num,
         level-offset => 2,
