@@ -92,6 +92,13 @@ sub sbs-lines-before-call( $lines-num=2, *%sl-trim ) is export {
     );
 }
 
+sub sbs-call-line( *%sl-trim ) is export {
+    sbs-rel-code-line(
+        level-offset => 2,
+        |%sl-trim
+    );
+}
+
 sub sbs-lines-after-call( $lines-num=2, *%sl-trim ) is export {
     sbs-rel-code-lines(
         1,

@@ -34,6 +34,14 @@ is $line, 'my $x = 10; # ', 'next-line-and-comment-prefix';
 }
 
 {
+    sub testsub-call-line {
+        is sbs-call-line, 'testsub-call-line; # CALL-LINE', 'call line';
+    }
+
+    testsub-call-line; # CALL-LINE
+}
+
+{
     sub testsub-line-after-call {
         is sbs-line-after-call, '# LINE-AFTER-CALL', 'line after call';
     }
