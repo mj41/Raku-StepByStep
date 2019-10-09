@@ -31,8 +31,8 @@ sub sbs-next-code-line(:$level-offset=0, *%sl-trim ) is export {
     sbs-rel-code-line(1, level-offset => 1+$level-offset, |%sl-trim )
 }
 
-sub sbs-next-line-and-comment-prefix is export {
-    sbs-next-code-line(level-offset => 1, :trim) ~ " # ";
+sub sbs-next-line-and-comment-prefix( *%sl-trim ) is export {
+    sbs-next-code-line(level-offset => 1, |%sl-trim) ~ " # ";
 }
 
 sub sbs-line-before-call( *%sl-trim ) is export {
