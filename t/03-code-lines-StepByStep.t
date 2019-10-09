@@ -41,7 +41,7 @@ is-deeply
     'next-code-lines'
 ;
 
-sub test-lines-before-call {
+sub testsub-lines-before-call {
     my @lines = lines-before-call(2);
     is-deeply
         @lines,
@@ -52,9 +52,9 @@ sub test-lines-before-call {
 
 # LINE-A-BEFORE-CALL
 # LINE-B-BEFORE-CALL
-test-lines-before-call;
+testsub-lines-before-call;
 
-sub test-lines-after-call {
+sub testsub-lines-after-call {
     my @lines = lines-after-call(2);
     is-deeply
         @lines,
@@ -63,7 +63,7 @@ sub test-lines-after-call {
     ;
 }
 
-test-lines-after-call;
+testsub-lines-after-call;
 # LINE-A-AFTER-CALL
 # LINE-B-AFTER-CALL
 
