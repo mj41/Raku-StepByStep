@@ -55,8 +55,9 @@ sub test-lines-before-call {
 test-lines-before-call;
 
 sub test-lines-after-call {
+    my @lines = lines-after-call(2);
     is-deeply
-        lines-after-call(2),
+        @lines,
         [ '# LINE-A-AFTER-CALL', '# LINE-B-AFTER-CALL' ],
         'lines after call'
     ;
