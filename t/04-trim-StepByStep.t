@@ -11,7 +11,20 @@ use StepByStep;
     is-deeply
         @linesXYZ,
         [ ' # SRC-LINE-X', ' # SRC-LINE-Y', ],
-        'shift left 3 - one space left'
+        'shift-left - three characters'
+    ;
+}
+
+$default-shift-left = 2;
+{
+    # Next two comments must have 4 leading spaces.
+    my @linesXYZ = next-code-lines;
+    # SRC-LINE-R
+    # SRC-LINE-S
+    is-deeply
+        @linesXYZ,
+        [ '  # SRC-LINE-R', '  # SRC-LINE-S', ],
+        'set default shift left - two characters'
     ;
 }
 

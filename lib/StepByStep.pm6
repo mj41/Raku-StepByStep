@@ -1,9 +1,11 @@
 unit module StepByStep;
 
 our @file-src-code-lines is export;
+our $default-shift-left is export = 0;
+
 sub code-line(
     $line-num,
-    :$shift-left=0,
+    :$shift-left=$default-shift-left,
     :$trim=True
 ) is export {
     my $line = @file-src-code-lines[ $line-num - 1 ];
