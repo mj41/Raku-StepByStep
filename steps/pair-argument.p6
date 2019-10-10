@@ -26,3 +26,9 @@ sub foo( $a ) {
 foo (arg1 => 2);
 
 
+sub foo( $a ) {
+    say $a; # arg1 => 2
+}
+foo (:arg1(2));
+
+

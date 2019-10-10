@@ -32,3 +32,6 @@ space;
 
 foo (arg1 => 2);
 space;
+
+foo (:arg1(2));
+space;
