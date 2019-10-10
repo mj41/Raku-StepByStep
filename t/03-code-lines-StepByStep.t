@@ -57,6 +57,24 @@ is-deeply
 }
 
 {
+    my @lines;
+    sub testsub-sbs-next-code-lines-and-call-line {
+        @lines = sbs-next-code-lines-and-call-line(2);
+    }
+    testsub-sbs-next-code-lines-and-call-line; # CALL-LINE
+
+    is-deeply
+        @lines,
+        [
+            "}",
+            "testsub-sbs-next-code-lines-and-call-line; # CALL-LINE",
+            "testsub-sbs-next-code-lines-and-call-line; # CALL-LINE"
+        ],
+        "next-code-lines-and-call-line"
+    ;
+}
+
+{
     sub testsub-lines-after-call {
         my @lines = sbs-lines-after-call(2);
         is-deeply

@@ -42,6 +42,14 @@ is $line, 'my $x = 10; # ', 'next-line-and-comment-prefix';
 }
 
 {
+    sub testsub-line-and-call-line {
+        # Next 'is' test must be written as one line (not multiple lines).
+        is sbs-next-code-line-and-call-line, ['}','testsub-line-and-call-line; # CALL-LINE'], 'next-code-line-and-call-line';
+    }
+    testsub-line-and-call-line; # CALL-LINE
+}
+
+{
     sub testsub-line-after-call {
         is sbs-line-after-call, '# LINE-AFTER-CALL', 'line after call';
     }

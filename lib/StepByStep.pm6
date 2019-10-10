@@ -31,6 +31,19 @@ sub sbs-next-code-line(:$level-offset=0, *%sl-trim ) is export {
     sbs-rel-code-line(1, level-offset => 1+$level-offset, |%sl-trim )
 }
 
+sub sbs-next-code-line-and-call-line( :$level-offset=0, *%sl-trim ) is export {
+    return
+        sbs-next-code-line(
+            level-offset => $level-offset + 1,
+            |%sl-trim
+        ),
+        sbs-call-line(
+            level-offset => $level-offset + 1,
+            |%sl-trim
+        )
+    ;
+}
+
 sub sbs-next-line-and-comment-prefix( *%sl-trim ) is export {
     sbs-next-code-line(level-offset => 1, |%sl-trim) ~ " # ";
 }
@@ -81,6 +94,20 @@ sub sbs-next-code-lines( $lines-num=2, :$level-offset=0, *%sl-trim ) is export {
         level-offset => $level-offset + 1,
         |%sl-trim
     );
+}
+
+sub sbs-next-code-lines-and-call-line( $lines-num=2, :$level-offset=0, *%sl-trim ) is export {
+    return
+        |sbs-next-code-lines(
+            $lines-num,
+            level-offset => $level-offset + 1,
+            |%sl-trim
+        ),
+        sbs-call-line(
+            level-offset => $level-offset + 1,
+            |%sl-trim
+        )
+    ;
 }
 
 sub sbs-lines-before-call( $lines-num=2, :$level-offset=0, *%sl-trim ) is export {
