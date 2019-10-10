@@ -1,4 +1,4 @@
-use StepByStep;
+use StepByStep::Code;
 @sbs-file-src-code-lines = $?FILE.IO.slurp.lines;
 
 sub explain-prev-lines($x, $lines-to-show=1) {

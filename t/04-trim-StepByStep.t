@@ -1,6 +1,6 @@
 use Test;
 
-use StepByStep;
+use StepByStep::Code;
 @sbs-file-src-code-lines = $?FILE.IO.slurp.lines;
 
 {

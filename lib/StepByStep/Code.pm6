@@ -1,4 +1,4 @@
-unit module StepByStep;
+unit module StepByStep::Code;
 
 our @sbs-file-src-code-lines is export;
 our $sbs-default-shift-left is export = 0;
