@@ -8,11 +8,11 @@ sub explain-prev-line($x) {
     print sbs-next-line-and-comment-prefix;
     say $x.perl;
     print sbs-next-line-and-comment-prefix;
-    say WHAT $x;
-    print sbs-next-line-and-comment-prefix;
-    say WHAT $x[0];
-    print sbs-next-line-and-comment-prefix;
     say $x[0]<b>;
+    print sbs-next-line-and-comment-prefix;
+    say $x.^name;
+    print sbs-next-line-and-comment-prefix;
+    say $x[0].^name;
     say "";
 }
 
