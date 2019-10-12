@@ -10,6 +10,7 @@ sub foo( $a ) {
 foo 'text-arg-1';
 
 
+# Literal pairs don't work.
 foo :arg1(2);  # (X::AdHoc) Too many positionals passed; expected 0 arguments but got 1
 foo arg1 => 2; # (X::AdHoc) Too many positionals passed; expected 0 arguments but got 1
 
@@ -32,3 +33,8 @@ sub foo( $a ) {
 foo (:arg1(2));
 
 
+# Hash works as expected.
+sub foo( $a ) {
+    say $a; # {arg1 => 2}
+}
+foo ( { arg1 => 2 } );

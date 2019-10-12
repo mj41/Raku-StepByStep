@@ -20,6 +20,8 @@ space;
 foo 'text-arg-1';
 space;
 
+# Literal pairs don't work.
+say sbs-prev-code-line;
 {
     use MONKEY-SEE-NO-EVAL;
     sbs-eval-and-exception-as-comment( -> { .EVAL }, 'foo :arg1(2); ');
@@ -35,3 +37,7 @@ space;
 
 foo (:arg1(2));
 space;
+
+# Hash works as expected.
+say sbs-prev-code-line;
+foo ( { arg1 => 2 } );
