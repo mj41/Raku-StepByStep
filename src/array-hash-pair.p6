@@ -16,6 +16,12 @@ sub explain-prev-line($x) {
     say "";
 }
 
+
+sbs-next-code-lines(2)>>.say;
+multi sub circumfix:<[ ]>( Hash $hash ) { say "# !!! my cicrumfix:<[ ]>( Hash )"; Array.new( $hash ) }
+multi sub circumfix:<[ ]>( Pair $pair ) { say "# !!! my cicrumfix:<[ ]>( Pair )"; Array.new( $( $pair.Hash ) ) }
+say "";
+
 {
     my $x = [ { b => 4 }, ]; # Note the comma
     explain-prev-line( $x );
