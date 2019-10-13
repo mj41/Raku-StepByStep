@@ -29,7 +29,15 @@ sub explain-prev-line($x) {
     explain-prev-line( $x );
 }
 {
+    my $x = [ Hash.new('b',4), ]; # With a comma
+    explain-prev-line( $x );
+}
+{
     my $x = [ ('b',4).Hash ]; # !WARN! again, we are even more explicit
+    explain-prev-line( $x );
+}
+{
+    my $x = [ ('b',4).Hash, ]; # With a comma
     explain-prev-line( $x );
 }
 {
@@ -54,5 +62,10 @@ sub explain-prev-line($x) {
 }
 {
     my $x = [ $( b => 4 ) ]; # Still a Pair
+    explain-prev-line( $x );
+}
+
+{
+    my $x = circumfix:<[ ]>( ({b=>4}, ) ); # Use operator directly
     explain-prev-line( $x );
 }
