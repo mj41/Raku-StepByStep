@@ -24,8 +24,8 @@ space;
 say sbs-prev-code-line;
 {
     use MONKEY-SEE-NO-EVAL;
-    sbs-eval-and-exception-as-comment( -> { .EVAL }, 'foo :arg1(2); ');
-    sbs-eval-and-exception-as-comment( -> { .EVAL }, 'foo arg1 => 2;');
+    say sbs-eval-and-exception-as-comment( -> $_ { .EVAL }, 'foo :arg1(2); ');
+    say sbs-eval-and-exception-as-comment( -> $_ { .EVAL }, 'foo arg1 => 2;');
     space;
 }
 

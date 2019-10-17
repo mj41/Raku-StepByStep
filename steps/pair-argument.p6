@@ -11,8 +11,8 @@ foo 'text-arg-1';
 
 
 # Literal pairs don't work.
-foo :arg1(2);  # (X::AdHoc) Too many positionals passed; expected 0 arguments but got 1
-foo arg1 => 2; # (X::AdHoc) Too many positionals passed; expected 0 arguments but got 1
+foo :arg1(2);  # (X::AdHoc) Too few positionals passed; expected 1 argument but got 0
+foo arg1 => 2; # (X::AdHoc) Too few positionals passed; expected 1 argument but got 0
 
 
 sub foo( $a ) {
