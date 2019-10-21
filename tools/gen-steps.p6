@@ -11,6 +11,7 @@ sub get_out($cmd) {
 
 
 for <<
+    capture-base
     capture-array
     array-hash-pair
     pair-argument
