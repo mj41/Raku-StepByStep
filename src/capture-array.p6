@@ -1,13 +1,18 @@
 use StepByStep::Code;
 @sbs-file-src-code-lines = $?FILE.IO.slurp.lines;
 
+sub space {
+    say "";
+    say "";
+}
+
 sub explain-prev-lines($x, $lines-to-show=1) {
     sbs-lines-before-call( $lines-to-show )>>.say;
     print sbs-next-line-and-comment-prefix;
     say $x.perl;
     print sbs-next-line-and-comment-prefix;
-    say $x.WHAT;
-    say "";
+    say $x.^name;
+    space;
 }
 
 {
