@@ -34,25 +34,19 @@ sub explain-prev-lines( $cap, :$explain=True, :$lines-to-show=1, :$space=2 ) {
     my Capture $cap = \( 1, 'a' => 2, 3 );
     explain-prev-lines( $cap, :2lines-to-show );
 }
-
-
 {
-    # See again quoted named argument.
+    # See another one with quoted named argument.
     my $cap1 = \( 1, 'a' => 2, 3 );
     explain-prev-lines( $cap1, :!explain, :2lines-to-show, :0space );
     my $cap2 = \( 1, a => 2, 3 );
     explain-prev-lines( $cap2, :!explain );
 }
+
+
 {
-    # Not so easy here to find out what will .list and .hash return.
-    my $cap1 = \( 1, 2, 'a' => 3 );
-    explain-prev-lines( $cap1, :!explain, :2lines-to-show, :0space );
-    my $cap2 = \( 1, 2, a => 3 );
-    explain-prev-lines( $cap2, :!explain, :1space );
-}; {
-    # You must see the code or .list and .hash outputs.
-    my $cap1 = \( 1, 2, 'a' => 3 );
-    explain-prev-lines( $cap1, :2lines-to-show, :1space );
-    my $cap2 = \( 1, 2, a => 3 );
-    explain-prev-lines( $cap2 );
+    my $cap1 = \( 1, 2, a => 3 );
+    explain-prev-lines( $cap1, :!explain, :0space );
+    # Bug https://github.com/rakudo/rakudo/issues/3258
+    my $cap2 = \( 1, 2, 'a' => 3 );
+    explain-prev-lines( $cap2, :!explain, :2lines-to-show );
 }
