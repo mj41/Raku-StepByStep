@@ -48,10 +48,8 @@ sub explain-prev-lines( $cap, :$explain=True, :$lines-to-show=1, :$space=2 ) {
     my $cap1 = \( 1, 2, 'a' => 3 );
     explain-prev-lines( $cap1, :!explain, :2lines-to-show, :0space );
     my $cap2 = \( 1, 2, a => 3 );
-    explain-prev-lines( $cap2, :!explain );
-}
-
-{
+    explain-prev-lines( $cap2, :!explain, :1space );
+}; {
     # You must see the code or .list and .hash outputs.
     my $cap1 = \( 1, 2, 'a' => 3 );
     explain-prev-lines( $cap1, :2lines-to-show, :1space );

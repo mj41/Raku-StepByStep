@@ -40,7 +40,6 @@ say $cap.perl; # \(1, 2, :a(3))
 my $cap2 = \( 1, 2, a => 3 );
 say $cap.perl; # \(1, 2, :a(3))
 
-
 # You must see the code or .list and .hash outputs.
 my $cap1 = \( 1, 2, 'a' => 3 );
 say $cap.^name; # Capture
