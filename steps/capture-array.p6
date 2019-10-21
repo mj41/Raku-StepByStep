@@ -1,4 +1,5 @@
-my $x = Array.new(  1, b => 2, 3  ); # Capture with two positional and one named arguments
+# Capture with two positional and one named arguments.
+my $x = Array.new(  1, b => 2, 3  );
 say $x.perl; # $[1, 3]
 say $x.^name; # Array
 
@@ -15,7 +16,7 @@ say $x.perl; # $[1, :b(2), 3]
 say $x.^name; # Array
 
 
-# Capture with two positional and one quoted named argument
+# Capture with two positionals and one quoted named argument.
 my $x = Array.new(  1, 'b' => 2, 3  );
 say $x.perl; # $[1, :b(2), 3]
 say $x.^name; # Array

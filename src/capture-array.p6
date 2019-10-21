@@ -16,8 +16,9 @@ sub explain-prev-lines($x, $lines-to-show=1) {
 }
 
 {
-    my $x = Array.new(  1, b => 2, 3  ); # Capture with two positional and one named arguments
-    explain-prev-lines( $x );
+    # Capture with two positional and one named arguments.
+    my $x = Array.new(  1, b => 2, 3  );
+    explain-prev-lines( $x, 2 );
 }
 {
     my $x = Array.new(  1, :b(2), 3  ); # The same
@@ -30,7 +31,7 @@ sub explain-prev-lines($x, $lines-to-show=1) {
     explain-prev-lines( $x, 3 );
 }
 {
-    # Capture with two positional and one quoted named argument
+    # Capture with two positionals and one quoted named argument.
     my $x = Array.new(  1, 'b' => 2, 3  );
     explain-prev-lines( $x, 2 );
 }
