@@ -14,7 +14,7 @@ for <<
     capture-array
     array-hash-pair
     pair-argument
-    context
+    context-simple
 >> -> $in-base {
     my $in-rel-path = "src/{$in-base}.p6";
     my $out-rel-path = "steps/{$in-base}.p6";
