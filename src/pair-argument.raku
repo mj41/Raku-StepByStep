@@ -6,6 +6,8 @@ sub foo( $a ) {
     say sbs-prev-code-line;
     print sbs-next-line-and-comment-prefix(:!trim);
     say $a;
+    print sbs-next-line-and-comment-prefix(:!trim);
+    say $a.^name;
     sbs-next-code-line-and-call-line>>.say;
 }
 
@@ -38,6 +40,27 @@ space;
 foo (:arg1(2));
 space;
 
-# Hash works as expected.
+# Hash works as expected #1.
+say sbs-prev-code-line;
+foo { arg1 => 2 };
+space;
+
+# Hash works as expected #2.
 say sbs-prev-code-line;
 foo ( { arg1 => 2 } );
+space;
+
+# Hash works as expected #3.
+say sbs-prev-code-line;
+foo( { arg1 => 2 } );
+space;
+
+# Hash works as expected #4.
+say sbs-prev-code-line;
+foo( ({ arg1 => 2 }) );
+space;
+
+# Hash works as expected #5.
+say sbs-prev-code-line;
+foo( $({ arg1 => 2 }) );
+space;

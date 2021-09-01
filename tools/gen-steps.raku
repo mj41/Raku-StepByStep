@@ -9,7 +9,6 @@ sub get_out($cmd) {
     return $captured-output;
 }
 
-
 for <<
     capture-base
     capture-array
@@ -17,10 +16,10 @@ for <<
     pair-argument
     context-simple
 >> -> $in-base {
-    my $in-rel-path = "src/{$in-base}.p6";
-    my $out-rel-path = "steps/{$in-base}.p6";
+    my $in-rel-path = "src/{$in-base}.raku";
+    my $out-rel-path = "steps/{$in-base}.raku";
     say "Generation '{$in-rel-path}' -> '$out-rel-path'";
-    my $cmd = "perl6 -Ilib {$in-rel-path}";
+    my $cmd = "raku -Ilib {$in-rel-path}";
     my $out = get_out($cmd);
     $out-rel-path.IO.spurt($out);
     CATCH { say $_.perl }

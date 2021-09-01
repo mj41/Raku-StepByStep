@@ -68,6 +68,13 @@ say $x[0]<b>; # 4
 say $x.^name; # Array
 say $x[0].^name; # Hash
 
+my $x = [ $%( b => 4 ) ]; # No comma - another Hash syntax
+say $x.gist; # [{b => 4}]
+say $x.perl; # $[{:b(4)},]
+say $x[0]<b>; # 4
+say $x.^name; # Array
+say $x[0].^name; # Hash
+
 my $x = [ b => 4 ]; # A Pair
 say $x.gist; # [b => 4]
 say $x.perl; # $[:b(4)]

@@ -57,6 +57,10 @@ sub explain-prev-line($x) {
     explain-prev-line( $x );
 }
 {
+    my $x = [ $%( b => 4 ) ]; # No comma - another Hash syntax
+    explain-prev-line( $x );
+}
+{
     my $x = [ b => 4 ]; # A Pair
     explain-prev-line( $x );
 }

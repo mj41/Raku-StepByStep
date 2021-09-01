@@ -1,7 +1,7 @@
 my Capture $cap = \( 1 );
 say $cap.^name; # Capture
 say $cap.list.perl; # (1,)
-say $cap.hash.perl; # Map.new(())
+say $cap.hash.perl; # Map.new
 say $cap.perl; # \(1)
 
 
@@ -23,7 +23,7 @@ say $cap.perl; # \(1, 3, :a(2))
 my Capture $cap = \( 1, 'a' => 2, 3 );
 say $cap.^name; # Capture
 say $cap.list.perl; # (1, :a(2), 3)
-say $cap.hash.perl; # Map.new(())
+say $cap.hash.perl; # Map.new
 say $cap.perl; # \(1, :a(2), 3)
 
 

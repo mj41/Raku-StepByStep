@@ -27,6 +27,7 @@ sub sbs-prev-code-line(:$level-offset=0, *%sl-trim ) is export {
     sbs-rel-code-line(-1, level-offset => 1+$level-offset, |%sl-trim )
 }
 
+#| Return line of code as Str.
 sub sbs-next-code-line(:$level-offset=0, *%sl-trim ) is export {
     sbs-rel-code-line(1, level-offset => 1+$level-offset, |%sl-trim )
 }
