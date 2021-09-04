@@ -1,6 +1,6 @@
 {
   "name": "Raku::StepByStep",
-  "description": "Raku Tooling to make Raku Step by Step Tutorial possible.",
+  "description": "Raku tooling to make Raku Step by Step Tutorial possible.",
   "version": "0.2.0",
   "perl": "6.d",
   "authors": [
