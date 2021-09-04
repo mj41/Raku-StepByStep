@@ -1,4 +1,4 @@
-#!/usr/bin/env perl6
+#!/usr/bin/env raku
 
 sub get_out($cmd) {
     my $proc = run $cmd.split(" "), :out, :merge;
