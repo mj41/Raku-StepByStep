@@ -1,5 +1,5 @@
 {
-  "name": "StepByStep",
+  "name": "Raku::StepByStep",
   "description": "Raku Tooling to make Raku Step by Step Tutorial possible.",
   "version": "0.2.0",
   "perl": "6.d",
@@ -14,12 +14,12 @@
     "Test::META"
   ],
   "provides": {
-    "StepByStep": "lib/StepByStep.rakumod",
-    "StepByStep::Code": "lib/StepByStep/Code.rakumod",
-    "StepByStep::Eval": "lib/StepByStep/Eval.rakumod"
+    "Raku::StepByStep": "lib/Raku/StepByStep.rakumod",
+    "Raku::StepByStep::Code": "lib/Raku/StepByStep/Code.rakumod",
+    "Raku::StepByStep::Eval": "lib/Raku/StepByStep/Eval.rakumod"
   },
   "support": {
-    "bugtracker": "https://github.com/mj41/StepByStep/issues",
+    "bugtracker": "https://github.com/mj41/Raku-StepByStep/issues",
     "license": "http://www.perlfoundation.org/artistic_license_2_0"
   },
   "license": "Apache-2.0",
@@ -28,7 +28,7 @@
     "examples"
   ],
   "production": 1,
-  "source-url": "git://github.com/mj41/StepByStep.git",
+  "source-url": "git://github.com/mj41/Raku-StepByStep.git",
   "raku": "6.d",
   "source-type": "git"
 }

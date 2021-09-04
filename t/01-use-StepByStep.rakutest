@@ -1,6 +1,6 @@
 use Test;
 
-use-ok 'StepByStep::Code';
-use-ok 'StepByStep::Eval';
+use-ok 'Raku::StepByStep::Code';
+use-ok 'Raku::StepByStep::Eval';
 
 done-testing;

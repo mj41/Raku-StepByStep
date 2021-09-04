@@ -1,5 +1,5 @@
-use StepByStep::Code;
-use StepByStep::Eval;
+use Raku::StepByStep::Code;
+use Raku::StepByStep::Eval;
 @sbs-file-src-code-lines = $?FILE.IO.slurp.lines;
 
 sub foo( $a ) {

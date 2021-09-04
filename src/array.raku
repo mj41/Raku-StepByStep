@@ -1,4 +1,4 @@
-#use StepByStep::Code;
+#use Raku::StepByStep::Code;
 #@sbs-file-src-code-lines = $?FILE.IO.slurp.lines;
 
 my Array $ar = [ 10, 20, 30 ];
